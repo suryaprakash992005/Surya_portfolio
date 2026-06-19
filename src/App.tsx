@@ -175,22 +175,6 @@ export default function App() {
 
           <Footer />
 
-          {/* Floating Resume Button */}
-          <motion.a
-            href={personal.resumePath}
-            download
-            id="fab-resume-download"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 3, type: 'spring' }}
-            whileHover={{ scale: 1.05, boxShadow: '0 12px 40px rgba(99,102,241,0.5)' }}
-            whileTap={{ scale: 0.95 }}
-            className="fab"
-            aria-label="Download Resume"
-          >
-            <Download size={15} />
-            <span className="hidden sm:inline">Resume</span>
-          </motion.a>
         </motion.div>
         </>
       )}
