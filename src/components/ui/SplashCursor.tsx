@@ -826,6 +826,7 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
     }
 
     function resizeCanvas() {
+      if (!canvas) return false;
       let width = scaleByPixelRatio(canvas.clientWidth);
       let height = scaleByPixelRatio(canvas.clientHeight);
       if (canvas.width !== width || canvas.height !== height) {
