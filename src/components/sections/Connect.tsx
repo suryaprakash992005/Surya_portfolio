@@ -59,8 +59,9 @@ export default function Connect() {
       {
         name: formData.name,
         email: formData.email,
-        subject: formData.subject,
-        message: formData.message
+        message: formData.subject
+          ? `Subject: ${formData.subject}\n\n${formData.message}`
+          : formData.message
       }
     ]);
 
