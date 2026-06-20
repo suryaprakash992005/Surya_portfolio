@@ -4,6 +4,7 @@ import Badge from '../ui/Badge';
 import { projects } from '../../lib/data';
 import { ArrowUpRight, Layers, CheckCircle2, ExternalLink } from 'lucide-react';
 import { ParticleCard } from '../ui/MagicBento';
+import SplashCursor from '../ui/SplashCursor';
 
 export default function Projects() {
   const [headerRef, headerControls] = useScrollAnimation();
@@ -13,7 +14,8 @@ export default function Projects() {
   const project = projects[0];
 
   return (
-    <section id="projects" className="section-padding" style={{ background: 'var(--bg-primary)' }}>
+    <section id="projects" className="section-padding relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+      <SplashCursor />
       <div className="container-custom">
 
         {/* Header */}

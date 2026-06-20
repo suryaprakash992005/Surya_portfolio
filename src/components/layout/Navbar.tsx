@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Github, Linkedin, Menu, X, User, Layers, FolderOpen, Map, Mail, Home } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Download, Github, Linkedin, User, Layers, FolderOpen, Map, Mail, Home } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import Dock from '../ui/Dock';
+import StaggeredMenu from '../ui/StaggeredMenu';
 import { personal } from '../../lib/data';
 
 interface NavbarProps {
@@ -21,7 +22,6 @@ const navLinks = [
 
 export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -46,18 +46,18 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   }, []);
 
   const scrollTo = (href: string) => {
-    setMobileOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
+      {/* Desktop Header */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden md:block ${
           scrolled
             ? 'glass border-b border-[var(--border)] py-3'
             : 'bg-transparent py-5'
@@ -85,8 +85,6 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
               Suryaprakash VK
             </span>
           </motion.a>
-
-          {/* Desktop Nav — removed; now using bottom Dock */}
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
@@ -124,79 +122,34 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
               Resume
             </motion.a>
           </div>
-
-          {/* Mobile Actions */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}
-              aria-label="Menu"
-            >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
         </div>
       </motion.header>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 right-0 z-40 w-72 glass border-l border-[var(--border)] flex flex-col pt-24 pb-8 px-6 md:hidden"
-          >
-            <nav className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                  className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-white/5"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-            <div className="mt-auto flex flex-col gap-3">
-              <a
-                href={personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm"
-                style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}
-              >
-                <Github size={16} />
-                GitHub
-              </a>
-              <a
-                href={personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm"
-                style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}
-              >
-                <Linkedin size={16} />
-                LinkedIn
-              </a>
-              <a
-                href={personal.resumePath}
-                download
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white text-sm font-medium"
-                style={{ background: 'var(--gradient)' }}
-              >
-                <Download size={14} />
-                Download Resume
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile Header (Staggered Menu) */}
+      <div className="block md:hidden">
+        <StaggeredMenu
+          isFixed={true}
+          position="right"
+          colors={['var(--bg-card)', 'var(--accent-indigo-glow)', 'var(--accent-indigo)']}
+          accentColor="var(--accent-indigo)"
+          items={navLinks.map(link => ({
+            label: link.label,
+            ariaLabel: `Go to ${link.label}`,
+            link: link.href,
+            onClick: () => scrollTo(link.href)
+          }))}
+          socialItems={[
+            { label: 'GitHub', link: personal.github },
+            { label: 'LinkedIn', link: personal.linkedin }
+          ]}
+          displaySocials={true}
+          displayItemNumbering={true}
+          menuButtonColor={theme === 'dark' ? '#fff' : '#000'}
+          openMenuButtonColor={theme === 'dark' ? '#fff' : '#000'}
+          logoUrl="" // SVG fallback
+          headerActions={<ThemeToggle theme={theme} onToggle={onToggleTheme} />}
+        />
+      </div>
       {/* ── Bottom Dock Navigation ── */}
       <div
         className="fixed bottom-4 left-0 right-0 z-50 flex justify-center pointer-events-none"
