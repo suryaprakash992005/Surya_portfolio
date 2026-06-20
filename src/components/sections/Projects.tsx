@@ -5,6 +5,7 @@ import { projects } from '../../lib/data';
 import { ArrowUpRight, Layers, CheckCircle2, ExternalLink } from 'lucide-react';
 import { ParticleCard } from '../ui/MagicBento';
 import SplashCursor from '../ui/SplashCursor';
+import Magnet from '../ui/Magnet';
 
 export default function Projects() {
   const [headerRef, headerControls] = useScrollAnimation();
@@ -78,20 +79,22 @@ export default function Projects() {
                 <Badge variant="success">Live in Production</Badge>
               </div>
 
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(99,102,241,0.3)' }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-                style={{ background: 'var(--gradient)' }}
-                id="project-live-demo"
-              >
-                <ExternalLink size={14} />
-                Live Demo
-                <ArrowUpRight size={14} />
-              </motion.a>
+              <Magnet padding={60} magnetStrength={3} activeTransition="transform 0.2s ease-out" inactiveTransition="transform 0.5s ease-in-out">
+                <motion.a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04, boxShadow: '0 0 28px rgba(99,102,241,0.4)' }}
+                  whileTap={{ scale: 0.96 }}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
+                  style={{ background: 'var(--gradient)' }}
+                  id="project-live-demo"
+                >
+                  <ExternalLink size={14} />
+                  Live Demo
+                  <ArrowUpRight size={14} />
+                </motion.a>
+              </Magnet>
             </div>
 
             <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>

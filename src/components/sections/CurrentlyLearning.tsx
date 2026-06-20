@@ -44,7 +44,7 @@ export default function CurrentlyLearning() {
               variants={staggerItemVariants}
               whileHover={{ y: -6, borderColor: 'rgba(99,102,241,0.3)' }}
               transition={{ duration: 0.3 }}
-              className="rounded-3xl p-7 relative overflow-hidden group"
+              className="rounded-3xl p-5 sm:p-7 relative overflow-hidden group"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
             >
               {/* Subtle gradient background */}
@@ -112,7 +112,7 @@ export default function CurrentlyLearning() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-10 p-7 rounded-3xl flex items-start gap-4"
+          className="mt-10 p-5 sm:p-7 rounded-3xl flex items-start gap-4"
           style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
         >
           <BookOpen size={20} className="text-indigo-400 flex-shrink-0 mt-0.5" />

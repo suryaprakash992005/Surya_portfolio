@@ -152,7 +152,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
       </div>
       {/* ── Bottom Dock Navigation ── */}
       <div
-        className="fixed bottom-4 left-0 right-0 z-50 flex justify-center pointer-events-none"
+        className="fixed bottom-4 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none"
         style={{ height: 120 }}
       >
         <div className="pointer-events-auto">

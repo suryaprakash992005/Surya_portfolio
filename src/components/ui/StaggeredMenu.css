@@ -355,3 +355,11 @@
     filter: invert(100%);
   }
 }
+
+/* Re-enable pointer events for the wrapper and header when the menu is open */
+.staggered-menu-wrapper[data-open] {
+  pointer-events: auto;
+}
+.staggered-menu-wrapper[data-open] .staggered-menu-header {
+  pointer-events: auto;
+}

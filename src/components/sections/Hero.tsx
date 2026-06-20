@@ -146,7 +146,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-4"
           >
             Suryaprakash VK<span className="text-zinc-600">.</span>
           </motion.h1>
@@ -187,13 +187,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <motion.button
               onClick={scrollToProjects}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-colors shadow-lg"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-colors shadow-lg w-full sm:w-auto"
             >
               View Projects <ArrowRight size={16} />
             </motion.button>
@@ -203,7 +203,7 @@ export default function Hero() {
               download
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-800 bg-zinc-950/20 text-white text-sm font-semibold hover:bg-zinc-900/50 transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-zinc-800 bg-zinc-950/20 text-white text-sm font-semibold hover:bg-zinc-900/50 transition-colors w-full sm:w-auto"
             >
               <Download size={15} /> Resume
             </motion.a>
@@ -212,7 +212,7 @@ export default function Hero() {
               onClick={scrollToContact}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-800 bg-zinc-950/20 text-white text-sm font-semibold hover:bg-zinc-900/50 transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-zinc-800 bg-zinc-950/20 text-white text-sm font-semibold hover:bg-zinc-900/50 transition-colors w-full sm:w-auto"
             >
               Contact Me
             </motion.button>

@@ -165,7 +165,7 @@ export default function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-7 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-center min-h-[440px]"
+            className="lg:col-span-7 rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-center min-h-[440px]"
             style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
           >
             <AnimatePresence mode="wait">
@@ -305,7 +305,7 @@ export default function Connect() {
                   </div>
                 </motion.form>
               )}
-            </AnimatePresence>
+              </AnimatePresence>
           </motion.div>
         </div>
 

@@ -60,7 +60,7 @@ export default function Certifications() {
                 variants={staggerItemVariants}
                 whileHover={{ y: -6, borderColor: 'rgba(99,102,241,0.3)' }}
                 transition={{ duration: 0.3 }}
-                className="p-8 relative overflow-hidden h-full"
+                className="p-5 sm:p-8 relative overflow-hidden h-full"
               >
                 {/* Background gradient */}
                 <div
@@ -72,7 +72,7 @@ export default function Certifications() {
 
                 <div className="relative z-10">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div
                       className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
                       style={{ background: `${cert.color}18`, border: `1px solid ${cert.color}30` }}

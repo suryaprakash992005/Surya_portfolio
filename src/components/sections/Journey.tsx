@@ -45,7 +45,7 @@ export default function Journey() {
             {journey.map((item) => (
               <ScrollStackItem key={item.stage}>
                 <div 
-                  className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 h-full w-full p-8 rounded-[24px] bg-[var(--bg-card)]"
+                  className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 h-full w-full p-5 md:p-8 rounded-[24px] bg-[var(--bg-card)]"
                   style={{
                     border: `1px solid ${item.color}30`,
                     boxShadow: `0 15px 35px -5px ${item.color}10, 0 0 30px rgba(0, 0, 0, 0.2)`

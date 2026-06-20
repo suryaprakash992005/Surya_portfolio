@@ -108,7 +108,7 @@ export default function Experience() {
               </div>
 
               {/* Right — metadata */}
-              <div className="flex md:flex-col gap-4 md:gap-6 md:items-end md:text-right">
+              <div className="flex flex-wrap md:flex-col gap-4 md:gap-6 md:items-end md:text-right">
                 <div
                   className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono"
                   style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#34d399' }}

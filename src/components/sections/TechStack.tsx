@@ -93,7 +93,7 @@ function StackSection({ group, index }: { group: StackGroup; index: number }) {
         initial="hidden"
         animate={controls}
         variants={staggerContainerVariants}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+        className="grid grid-cols-1 min-[375px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
       >
         {group.items.map((tech) => (
           <TechCard key={tech.name} tech={tech} />

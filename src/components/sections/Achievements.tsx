@@ -40,7 +40,7 @@ export default function Achievements() {
               variants={staggerItemVariants}
               whileHover={{ y: -4, borderColor: 'rgba(99,102,241,0.3)' }}
               transition={{ duration: 0.3 }}
-              className="rounded-3xl p-7 relative overflow-hidden group"
+              className="rounded-3xl p-5 sm:p-7 relative overflow-hidden group"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
             >
               {/* Gradient on hover */}
