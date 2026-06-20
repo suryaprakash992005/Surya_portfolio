@@ -958,7 +958,7 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
       if (!velocity || !dye) return;
       splatProgram.bind();
       gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
-      gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
+      gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas!.width / canvas!.height);
       gl.uniform2f(splatProgram.uniforms.point, x, y);
       gl.uniform3f(splatProgram.uniforms.color, dx, dy, 0.0);
       gl.uniform1f(splatProgram.uniforms.radius, correctRadius(config.SPLAT_RADIUS / 100.0));
@@ -972,7 +972,7 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
     }
 
     function correctRadius(radius: number) {
-      let aspectRatio = canvas.width / canvas.height;
+      let aspectRatio = canvas!.width / canvas!.height;
       if (aspectRatio > 1) radius *= aspectRatio;
       return radius;
     }
@@ -981,8 +981,8 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
       pointer.id = id;
       pointer.down = true;
       pointer.moved = false;
-      pointer.texcoordX = posX / canvas.width;
-      pointer.texcoordY = 1.0 - posY / canvas.height;
+      pointer.texcoordX = posX / canvas!.width;
+      pointer.texcoordY = 1.0 - posY / canvas!.height;
       pointer.prevTexcoordX = pointer.texcoordX;
       pointer.prevTexcoordY = pointer.texcoordY;
       pointer.deltaX = 0;
@@ -993,8 +993,8 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
     function updatePointerMoveData(pointer: Pointer, posX: number, posY: number, color: { r: number; g: number; b: number }) {
       pointer.prevTexcoordX = pointer.texcoordX;
       pointer.prevTexcoordY = pointer.texcoordY;
-      pointer.texcoordX = posX / canvas.width;
-      pointer.texcoordY = 1.0 - posY / canvas.height;
+      pointer.texcoordX = posX / canvas!.width;
+      pointer.texcoordY = 1.0 - posY / canvas!.height;
       pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX);
       pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY);
       pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0;
@@ -1006,13 +1006,13 @@ const SplashCursor: React.FC<SplashCursorProps> = ({
     }
 
     function correctDeltaX(delta: number) {
-      let aspectRatio = canvas.width / canvas.height;
+      let aspectRatio = canvas!.width / canvas!.height;
       if (aspectRatio < 1) delta *= aspectRatio;
       return delta;
     }
 
     function correctDeltaY(delta: number) {
-      let aspectRatio = canvas.width / canvas.height;
+      let aspectRatio = canvas!.width / canvas!.height;
       if (aspectRatio > 1) delta /= aspectRatio;
       return delta;
     }
